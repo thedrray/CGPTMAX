@@ -10,16 +10,16 @@ openai.api_key = "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"
 openai.organization = "org-SCJYIps9m95vLYRIHyzPSYLz"
 
 
-def BitcoinPriceAnalysis():
+def MaticPriceAnalysis():
 
-    print("Bitcoin Price Analysis")
+    print("Matic Price Analysis")
 
-    # Get Bitcoin Price From the last 30 days
-    url = "https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd/history"
+    # Get MAtic Price From the last 30 days
+    url = "https://coinranking1.p.rapidapi.com/coin/uW2tk-ILY0ii/history"
     querystring = {
         "referenceCurrencyUuid": "yhjMzLPhuIDl", "timePeriod": "7d"}
     headers = {
-        "X-RapidAPI-Key": "a617d6467dmshac84323ce581a72p11caa9jsn1adf8bbcbd47",
+        "X-RapidAPI-Key": "6ff99324d0mshf11806df4f4905cp151f8bjsn100aa56bf0b4",
         "X-RapidAPI-Host": "coinranking1.p.rapidapi.com"
     }
 
@@ -36,7 +36,7 @@ def BitcoinPriceAnalysis():
 
     # ask ChatGPT To analyze the prices
     pricesList = ','.join(prices)
-    chatGPTPrompt = "Hey there ChatGPT! Could you provide a brief analysis based on the recent Bitcoin prices over the last seven days? I'll share the price data with you, and I'd love to hear your insights on what this could mean for the cryptocurrency market. Thanks in advance for your help! price list: " + pricesList
+    chatGPTPrompt = "Hey there ChatGPT! Could you provide a brief analysis based on the recent Matic prices over the last seven days? I'll share the price data with you, and I'd love to hear your insights on what this could mean for the cryptocurrency market. Thanks in advance for your help! price list: " + pricesList
     completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
@@ -155,8 +155,8 @@ Please keep this information in mind and generate a prompt about  """ + input}
     return imgURL
 
 
-# SearchTheWeb("learnwithhasan.com affiliate marketing")
-# print(BitcoinPriceAnalysis())
+
+# print(MaticPriceAnalysis())
 
 st.title('ChatGPT Max Edition 2.0 🚀')
 st.subheader(
@@ -169,9 +169,9 @@ input = st.text_input("Prompt:", value="", max_chars=100, key=None,
 
 
 if st.button('Generate'):
-    if 'bitcoin' in input:
-        with st.spinner('Analyzing Current Bitcoin Price...'):
-            result = BitcoinPriceAnalysis()
+    if 'Matic' in input:
+        with st.spinner('Analyzing Current Matic Price...'):
+            result = MaticPriceAnalysis()
             st.text_area("Analysis", result.strip(),
                          height=500, max_chars=None, key=None,)
         st.success('Done!')
